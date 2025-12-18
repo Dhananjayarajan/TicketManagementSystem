@@ -7,19 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Application/Comment/" />
     <Folder Include="Application/Ticket/Create/" />
     <Folder Include="Application/Ticket/Delete/" />
     <Folder Include="Application/Ticket/Update/" />
     <Folder Include="Domain/" />
     <Folder Include="Persistance/" />
+    <Folder Include="Views/Account/" />
     <Folder Include="Views/Ticket/" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="11.1.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
-  </ItemGroup>
+<ItemGroup>
+  <PackageReference Include="MediatR" Version="11.1.0" />
+  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+</ItemGroup>
 
 </Project>

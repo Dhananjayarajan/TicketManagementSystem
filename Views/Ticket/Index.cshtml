@@ -5,31 +5,116 @@
 }
 
 <div class="container mt-4">
-    <h2>Tickets</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Helpdesk Tickets</h2>
+        <a href="@Url.Action("Create", "Ticket")" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Create New Ticket
+        </a>
+    </div>
 
-    <a href="@Url.Action("Create", "Ticket")" class="btn btn-success mb-3">Create New Ticket</a>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            No tickets found. Create your first ticket to get started!
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ticket in Model)
+                    {
+                        <tr>
+                            <td>@ticket.Id</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Ticket", new { id = ticket.Id })">
+                                    @ticket.Title
+                                </a>
+                            </td>
+                            <td>
+                                @if (ticket.Priority == "High")
+                                {
+                                    <span class="badge bg-danger">High</span>
+                                }
+                                else if (ticket.Priority == "Medium")
+                                {
+                                    <span class="badge bg-warning text-dark">Medium</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-info">Low</span>
+                                }
+                            </td>
+                            <td>
+                                @if (ticket.Status == "Open")
+                                {
+                                    <span class="badge bg-primary">Open</span>
+                                }
+                                else if (ticket.Status == "In Progress")
+                                {
+                                    <span class="badge bg-warning text-dark">In Progress</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Resolved</span>
+                                }
+                            </td>
+                            <td>@ticket.CreatedDate.ToString("MMM dd, yyyy")</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="@Url.Action("Details", "Ticket", new { id = ticket.Id })"
+                                        class="btn btn-sm btn-info" title="View Details">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="@Url.Action("Edit", "Ticket", new { id = ticket.Id })"
+                                        class="btn btn-sm btn-primary" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal-@ticket.Id" title="Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Priority</th>
-                <th scope="col">Status</th>
-                <th scope="col">Created Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ticket in Model)
-            {
-                <tr>
-                    <td>@ticket.Id</td>
-                    <td>@ticket.Title</td>
-                    <td>@ticket.Priority</td>
-                    <td>@ticket.Status</td>
-                    <td>@ticket.CreatedDate.ToString("yyyy-MM-dd")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                                <!-- Delete Confirmation Modal -->
+                                <div class="modal fade" id="deleteModal-@ticket.Id" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete Ticket</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete ticket "<strong>@ticket.Title</strong>"?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <form asp-action="Delete" asp-route-id="@ticket.Id" method="post"
+                                                    style="display: inline;">
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 </div>

@@ -1,8 +1,103 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="display-4">
+                <i class="bi bi-headset text-primary"></i>
+                Helpdesk Ticket Management System
+            </h1>
+            <p class="lead">Manage your support tickets efficiently and effectively</p>
+            <hr class="my-4">
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-ticket-perforated display-1 text-primary"></i>
+                    <h5 class="card-title mt-3">View Tickets</h5>
+                    <p class="card-text">Browse and manage all support tickets in one place</p>
+                    <a href="@Url.Action("Index", "Ticket")" class="btn btn-primary">
+                        View All Tickets
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-plus-circle display-1 text-success"></i>
+                    <h5 class="card-title mt-3">Create Ticket</h5>
+                    <p class="card-text">Submit a new support ticket with detailed information</p>
+                    <a href="@Url.Action("Create", "Ticket")" class="btn btn-success">
+                        Create New Ticket
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-code-square display-1 text-info"></i>
+                    <h5 class="card-title mt-3">API Documentation</h5>
+                    <p class="card-text">Interactive Swagger documentation for the REST API</p>
+                    <a href="/swagger" class="btn btn-info" target="_blank">
+                        <i class="bi bi-box-arrow-up-right"></i> View API Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Features</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle text-success"></i> Create, Read, Update, Delete Tickets
+                                </li>
+                                <li><i class="bi bi-check-circle text-success"></i> Priority and Status Management</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Comment System for Collaboration
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle text-success"></i> RESTful API with Swagger
+                                    Documentation</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Clean and Responsive UI</li>
+                                <li><i class="bi bi-check-circle text-success"></i> User Authentication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                <h6 class="alert-heading"><i class="bi bi-lightbulb"></i> Quick Start Guide</h6>
+                <hr>
+                <ol class="mb-0">
+                    <li><strong>Create a Ticket:</strong> Click "Create New Ticket" to submit your issue</li>
+                    <li><strong>Track Progress:</strong> View ticket status and add comments for updates</li>
+                    <li><strong>Use the API:</strong> Access our RESTful API via <a href="/swagger"
+                            target="_blank">Swagger Documentation</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>

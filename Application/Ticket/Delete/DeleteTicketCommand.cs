@@ -1,8 +1,5 @@
-using System;
+using MediatR;
 
 namespace TicketProject.Application.Ticket.Delete;
 
-public class DeleteTicketCommand
-{
-
-}
+public record DeleteTicketCommand(int Id) : IRequest<bool>;

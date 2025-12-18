@@ -1,23 +1,24 @@
-﻿@model TicketProject.Application.Ticket.Create.CreateTicketCommand
+﻿@model TicketProject.Application.Ticket.Update.UpdateTicketCommand
 
 @{
-    ViewData["Title"] = "Create Ticket";
+    ViewData["Title"] = "Edit Ticket";
 }
 
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-success text-white">
-                    <h4 class="mb-0"><i class="bi bi-plus-circle"></i> Create New Ticket</h4>
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Edit Ticket #@Model.Id</h4>
                 </div>
                 <div class="card-body">
-                    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+                    <form asp-action="Edit" method="post" class="needs-validation" novalidate>
                         @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
 
                         <div class="mb-3">
                             <label asp-for="Title" class="form-label">Title</label>
-                            <input asp-for="Title" class="form-control" placeholder="Enter ticket title" required />
+                            <input asp-for="Title" class="form-control" required />
                             <span asp-validation-for="Title" class="text-danger"></span>
                             <div class="invalid-feedback">
                                 Please enter a title.
@@ -26,29 +27,39 @@
 
                         <div class="mb-3">
                             <label asp-for="Description" class="form-label">Description</label>
-                            <textarea asp-for="Description" class="form-control" rows="4"
-                                placeholder="Describe the issue in detail" required></textarea>
+                            <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                             <div class="invalid-feedback">
                                 Please enter a description.
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Priority" class="form-label">Priority</label>
-                            <select asp-for="Priority" class="form-select">
-                                <option value="Low">Low</option>
-                                <option value="Medium" selected>Medium</option>
-                                <option value="High">High</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Status" class="form-label">Status</label>
+                                <select asp-for="Status" class="form-select">
+                                    <option value="Open">Open</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Resolved">Resolved</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Priority" class="form-label">Priority</label>
+                                <select asp-for="Priority" class="form-select">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="@Url.Action("Index", "Ticket")" class="btn btn-secondary">
+                            <a href="@Url.Action("Details", "Ticket", new { id = Model.Id })" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> Cancel
                             </a>
-                            <button type="submit" class="btn btn-success">
-                                <i class="bi bi-check-circle"></i> Create Ticket
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Save Changes
                             </button>
                         </div>
                     </form>

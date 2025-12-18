@@ -1,8 +1,5 @@
-using System;
+using MediatR;
 
 namespace TicketProject.Application.Ticket.GetById;
 
-public class GetTicketById
-{
-
-}
+public record GetTicketByIdQuery(int Id) : IRequest<TicketDetailsDto?>;
