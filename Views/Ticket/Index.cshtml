@@ -1,0 +1,35 @@
+﻿@model List<TicketProject.Application.Ticket.GetAll.TicketDto>
+
+@{
+    ViewData["Title"] = "Tickets List";
+}
+
+<div class="container mt-4">
+    <h2>Tickets</h2>
+
+    <a href="@Url.Action("Create", "Ticket")" class="btn btn-success mb-3">Create New Ticket</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>@ticket.Id</td>
+                    <td>@ticket.Title</td>
+                    <td>@ticket.Priority</td>
+                    <td>@ticket.Status</td>
+                    <td>@ticket.CreatedDate.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
