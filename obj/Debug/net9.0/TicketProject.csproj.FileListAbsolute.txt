@@ -216,3 +216,4 @@
 /Users/dhananjayarajan/my-coding/cSharp/ASP NET/Ticketing/TicketProject/obj/Debug/net9.0/TicketProject.pdb
 /Users/dhananjayarajan/my-coding/cSharp/ASP NET/Ticketing/TicketProject/obj/Debug/net9.0/TicketProject.genruntimeconfig.cache
 /Users/dhananjayarajan/my-coding/cSharp/ASP NET/Ticketing/TicketProject/obj/Debug/net9.0/ref/TicketProject.dll
+/Users/dhananjayarajan/my-coding/cSharp/ASP NET/Ticketing/TicketProject/obj/Debug/net9.0/TicketProject.sourcelink.json
